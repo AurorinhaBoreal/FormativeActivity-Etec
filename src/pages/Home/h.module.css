@@ -1,0 +1,11 @@
+.textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3vw;
+    width: auto;
+    height: auto;
+}
