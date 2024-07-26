@@ -6,6 +6,7 @@ This readme will be updated as the project evolves and the demand increases.
 
 ## Table of Contents
 - [✨ Running the Project](#running-the-project)
+- [🎨 Choosen Design](#choosen-design)
 - [🏗️ Developing the Project](#developing-the-project)
 - [📄 License](#license)
 
@@ -16,6 +17,12 @@ Just clone the repository, run npm install and npm run dev at last... For now...
 ## Developoing the Project
 
 Don't know how the development will be made yet...
+
+## Choosen Design
+
+This part is still being designed but the initial pallete is the following:
+
+<img src="docs/colorPallete.png" alt="Color Pallete" width="600" height="400">
 
 ## License
 
