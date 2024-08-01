@@ -9,5 +9,5 @@ export default defineConfig({
     visualizer({
       open: false,
     }),
-  ],
+  ]
 })
