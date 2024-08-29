@@ -1,0 +1,28 @@
+.navbarContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.textContainer {
+    margin: 1vw 2vw;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+.navbarTitle {
+    color: var(--c-lighterBlue);
+    display: flex;
+    align-items: center;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+.navbarDivider {
+    height: 1.5vw;
+    width: 0.2vw;
+    background-color: var(--c-lighterBlue);
+    border: 2px solid var(--c-lighterBlue);
+    border-radius: 20px;
+}
