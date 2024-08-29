@@ -11,7 +11,7 @@ const Index = () => {
     return (
         <>
             {booksCover.map((cover, index) => (
-                <div className={styles.cardContainer}>
+                <div key={index} className={styles.cardContainer}>
                     <div className={styles.imgWrapper}>
                         <img src={cover} alt={booksName[index]+"-"+booksAuthor[index]} className={styles.bookCover} />
                     </div>

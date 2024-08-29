@@ -2,9 +2,9 @@
     overflow: hidden;
     text-align: center;
     width: max-content;
-    background-color: #e5f9e0;
+    background-color: var(--c-lighterBlue);
     border-radius: 2vw;
-    border: 5px solid #2f9c95;
+    border: 5px solid var(--c-blue);
     color: black;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .cardDivider {
-    border: 5px solid #2f9c95;
+    border: 5px solid var(--c-blue);
 }
 
 .textWrapper {
@@ -35,4 +35,5 @@
 
 .btnWrapper {
     margin-bottom: 1vw;
+    background-color: var(--c-lightBblue);
 }
