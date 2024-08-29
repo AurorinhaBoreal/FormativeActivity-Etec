@@ -1,0 +1,6 @@
+.headerContainer {
+    padding: 1vw 0vw 1vw 1.5vw;
+    border-bottom: 0.5vw solid black;
+    display: flex;
+    background-color: var(--c-redMain);
+}
