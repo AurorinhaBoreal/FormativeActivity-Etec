@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.container .homeImg {
+    width: 60vw;
+    border-right: 0.5vw solid black;
+}
+
+.info {
+    width: 100%;
+    margin-top: 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.homeLogo {
+    width: 10vw;
+}
+
+.info > h1 {
+    width: 20ch;
+    color: black;
+    text-align: center;
+}
+
+.info > div {
+    display: flex;
+    gap: 2vw;
+}
+
+div > button {
+    height: 3vw;
+    width: 10vw;
+    margin-top: 2vw;
+    background-color: var(--c-redMain);
+    font-size: 1.5vw;
+    color: var(--c-darkBlue);
+    border: 0.3vw solid var(--c-darkBlue);
+    border-radius: 10px;
+    transition-duration: 0.4s;  
+}
+
+div > button:hover {
+    border: 0.3vw solid var(--c-redMain);
+    background-color: var(--c-blue);
+    color: var(--c-redMain);
+}
