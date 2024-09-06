@@ -36,13 +36,19 @@ We have 3 pages:
 
 Thats the main page that the user gets access when he first enter the website
 
+![image](https://github.com/user-attachments/assets/cc1efa4f-afb0-40b6-a4c7-131f745e02c3)
+
 ### Register Books (In progress)
 
 This page is, as the name says, the page for registering new books to the database, I have the basic form and still need to know how to implement the book covers from the front end to the database.
 
+![image](https://github.com/user-attachments/assets/45635e6a-835d-4500-9175-a63fe8036c62)
+
 ### List Books (In progress)
 
 At last we have the List Books page that... List the books and allows us to see their title, author, cover and description
+
+![image](https://github.com/user-attachments/assets/ba63af84-d32b-4ad4-9921-5b76c4a6deb7)
 
 
 ## License
