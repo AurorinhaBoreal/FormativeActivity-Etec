@@ -1,11 +1,16 @@
 .container {
     display: flex;
     flex-direction: row;
+    background-color: (180deg, rgba(233,255,249,1) 0%, rgba(158,216,219,1) 100%)
 }
 
 .container .homeImg {
     width: 60vw;
     border-right: 0.5vw solid black;
+}
+
+.homeImg{
+    height: 100%;
 }
 
 .info {
