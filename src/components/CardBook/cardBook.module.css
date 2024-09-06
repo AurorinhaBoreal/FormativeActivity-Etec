@@ -1,18 +1,39 @@
 .cardContainer {
+    overflow: hidden;
     text-align: center;
+    width: max-content;
+    background-color: var(--c-lighterBlue);
+    border-radius: 2vw;
+    border: 5px solid var(--c-blue);
+    color: black;
 }
 
 .bookCover {
-    height: 400px;
-    width: 200px;
-    border-radius: 20px;
+    height: 350px;
+    width: 250px;
 }
 
-.title {
-    display: flex;
+.imgWrapper {
+    border-top-right-radius: 2vw;
+    border-top-left-radius: 2vw;
+    height: 350px;
+}
+
+.cardDivider {
+    border: 5px solid var(--c-blue);
+}
+
+.textWrapper {
+    width: 100%;
+    margin-top: 0.5vw;
+    margin-bottom: 1vw; 
+}
+
+.title {    
     height: 10px;
 }
 
-.author {
-    margin-bottom: 5vw;
+.btnWrapper {
+    margin-bottom: 1vw;
+    background-color: var(--c-lightBblue);
 }

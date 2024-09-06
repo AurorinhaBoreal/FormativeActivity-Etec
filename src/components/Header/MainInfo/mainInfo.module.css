@@ -1,0 +1,12 @@
+.img {
+    width: 7vw;
+    height: auto;
+}
+
+.title {
+    margin-top: 2vw;
+    text-align: center;
+    color: var(--c-lighterBlue);
+    font-size: 2vw;
+    text-decoration: underline;
+}

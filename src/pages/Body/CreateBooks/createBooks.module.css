@@ -1,0 +1,43 @@
+.backgroundImg{
+    padding-top: 10vw;
+    height: 80vh;
+    background-image: url("../../../../public/registerBook.jpg");
+    background-size: cover;
+    object-fit: contain;
+}
+
+.formsContainer{
+    width: 40%;
+    padding: 2vw 0;
+    color: black;
+    background-color: var(--c-lighterBlue);
+    border: var(--c-blue) solid 5px;
+    border-radius: 20px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputWrapper {
+    display: flex;
+    gap: 2vw;
+}
+
+.flexer{
+    gap: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title{
+    margin-bottom: 1vw;
+    font-size: 2vw;
+}
+
+.description{
+    margin-bottom: 1vw;
+    font-size: 1.2vw;
+    text-align: center;
+}
