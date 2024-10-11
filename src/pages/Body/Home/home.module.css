@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    background-color: (180deg, rgba(233,255,249,1) 0%, rgba(158,216,219,1) 100%)
+    background-color: (180deg, rgba(233,255,249,1) 0%, rgba(158,216,219,1) 100%);
 }
 
 .container .homeImg {

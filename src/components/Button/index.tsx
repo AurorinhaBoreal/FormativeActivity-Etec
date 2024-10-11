@@ -2,17 +2,15 @@ import styles from "./button.module.css"
 
 interface info {
     btnText: string
+    afterClick: (e: React.FormEvent) => void
 }
-const Button = ({btnText}: info) => {
+const Button = ({btnText, afterClick}: info) => {
 
-    const handleClick = () => {
-        window.open("https://aurora-kruschewsky-portfolio.onrender.com")
-    }
     return (
         <div>
             <button 
                 className={styles.button}
-                onClick={handleClick}
+                onClick={afterClick}
             >{btnText}</button>
         </div>
     )
