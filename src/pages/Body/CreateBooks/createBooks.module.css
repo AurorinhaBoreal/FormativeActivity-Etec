@@ -1,7 +1,7 @@
 .backgroundImg{
     padding-top: 10vw;
     height: 80vh;
-    background-image: url("../../../../public/registerBook.jpg");
+    background-image: url("../../../../registerBook.jpg");
     background-size: cover;
     object-fit: contain;
 }
