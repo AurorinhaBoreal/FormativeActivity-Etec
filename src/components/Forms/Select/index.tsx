@@ -25,7 +25,7 @@ const Select = ({options, placeholder, text, name, sendData}: Info) => {
                 <option value={-1}>{placeholder}</option>
                 {options.map((option) => (
                     <>
-                        <option key={option.nome_categoria+option.cod_categoria} value={option.nome_categoria}>{option.nome_categoria}</option>
+                        <option key={option.nome_categoria+option.cod_categoria} value={option.cod_categoria}>{option.nome_categoria}</option>
                     </>
                 ))}
             </select>
