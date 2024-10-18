@@ -7,8 +7,7 @@ import { ChangeEvent, useEffect, useState } from "react"
 import Categoria from "../../../types/Category"
 import Book from "../../../types/Book"
 import { useNavigate } from "react-router-dom"
-import { getStorage, ref } from "firebase/storage";
-
+import firebaseInit from "../../../utils/firebaseBucket"
 
 const CreateBooks = () => {
     const navigate = useNavigate()
@@ -17,11 +16,12 @@ const CreateBooks = () => {
         nome_livro: "",
         descricao_livro: "",
         autor_livro: "",
-        categoria_livro: ""
+        cod_categoria: 0
     });
 
     useEffect(() => {
-        fetch("http://localhost:5000/listagemCategorias", {
+        // fireBucket()
+        fetch("http://localhost:3000/listagemCategorias", {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json", // Correct MIME type
@@ -38,19 +38,19 @@ const CreateBooks = () => {
             if (data.data.length > 0) {
                 setBook(prevBook => ({
                     ...prevBook,
-                    categoria_livro: data.data[0].nome_categoria
+                    cod_categoria: data.data[0].cod_categoria
                 }));
             }
         })
         .catch((error) => {
             console.error("Fetch error:", error);
         });
-    }, [    ]);
+    }, []);
 
     const createBook = (e: React.FormEvent) => {
         e.preventDefault()
 
-        fetch("http://localhost:5000/inserirLivro", {
+        fetch("http://localhost:3000/inserirLivro", {
             method: 'POST',
             mode: "cors",
             headers: {
@@ -66,7 +66,7 @@ const CreateBooks = () => {
         .then(
             (data)=>{
                 console.log(data)
-                navigate("/listLivros")
+                navigate("/books/list")
             }
         )
         .catch(
@@ -117,19 +117,19 @@ const CreateBooks = () => {
                         />
                         <Select
                             sendData={handleChange}
-                            name="categoria_livro"
+                            name="cod_categoria"
                             options={categories}
                             text="Select the book's category:"
                             placeholder="---"
                         />
                     </div>
-                    <Input
+                    {/* <Input
                         name="capa_livro"
                         placeHolder="capa.png"
                         text="Send the Book Cover file"
                         sendData={handleFile}
                         type="file"
-                        />
+                        /> */}
                 </div>
                 <Button
                     afterClick={createBook}
