@@ -14,5 +14,4 @@ const Button = ({btnText, afterClick}: info) => {
         </div>
     )
 }
-
 export default Button;
