@@ -9,7 +9,8 @@ import Book from "../../../types/Book"
 import { useNavigate, useParams } from "react-router-dom"
 
 const UpdateBooks = () => {
-    let { nome_livro } = useParams()
+    const { nome_livro } = useParams()
+    const [formattedName, setFormattedName ] = useState("")
     const navigate = useNavigate()
     const [categories, setCategories] = useState<Categoria[]>([]);
     const [book, setBook] = useState<Book>({
@@ -18,66 +19,6 @@ const UpdateBooks = () => {
         autor_livro: "",
         cod_categoria: 0
     });
-
-    const unformatBookName = () => {
-        if (nome_livro?.includes("-")) {
-            nome_livro = nome_livro.replace("-", " ")
-        }
-    }
-
-    const fetchCategories = () => {
-        fetch("http://localhost:3000/listagemCategorias", {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json", // Correct MIME type
-            }
-        })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            setCategories(data.data);
-            if (data.data.length > 0) {
-                setBook(prevBook => ({
-                    ...prevBook,
-                    cod_categoria: data.data[0].cod_categoria
-                }));
-            }
-        })
-        .catch((error) => {
-            console.error("Fetch error:", error);
-        });
-    }
-
-    const fetchBook = () => {
-        fetch("http://localhost:3000/listagemLivro/"+nome_livro, {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json", // Correct MIME type
-            }
-        })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            setBook(data.data);
-        })
-        .catch((error) => {
-            console.error("Fetch error:", error);
-        });
-    }
-
-    useEffect(() => {
-        unformatBookName()
-        fetchCategories()
-        fetchBook()
-    }, []);
 
     const updateBook = (e: React.FormEvent) => {
         e.preventDefault()
@@ -111,6 +52,57 @@ const UpdateBooks = () => {
             [name]: value
         });
     }
+
+    useEffect(() => {
+        if (nome_livro?.includes("-")) {
+            setFormattedName(nome_livro.replace("-", " "))
+        }
+    
+        fetch("http://localhost:3000/listagemCategorias", {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json", // Correct MIME type
+            }
+        })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            setCategories(data.data);
+            if (data.data.length > 0) {
+                setBook(prevBook => ({
+                    ...prevBook,
+                    cod_categoria: data.data[0].cod_categoria
+                }));
+            }
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error);
+        });
+
+        fetch("http://localhost:3000/listagemLivro/"+formattedName, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json", // Correct MIME type
+            }
+        })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            setBook(data.data);
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error);
+        });
+    }, [nome_livro, formattedName]);
+
 
     return (
         <div className={styles.backgroundImg}>
