@@ -7,7 +7,6 @@ export default function Home() {
   const navigateTo = (path: string) => {
     navigate(path);
   }
-
   return (
     <>
       <div className={styles.container}>

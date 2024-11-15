@@ -16,7 +16,6 @@ const Input = ({type, text, name, placeHolder, sendData}: info) => {
         setData(e)
         if (data != undefined) sendData(data)
     }
-
     return (
         <div className={styles.inputWrapper}>
             <label className={styles.label} htmlFor={name+type}>{text}</label>

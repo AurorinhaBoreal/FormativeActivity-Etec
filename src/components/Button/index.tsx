@@ -5,7 +5,6 @@ interface info {
     afterClick: (e: React.FormEvent) => void
 }
 const Button = ({btnText, afterClick}: info) => {
-
     return (
         <div>
             <button 
