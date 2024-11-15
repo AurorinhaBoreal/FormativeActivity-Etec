@@ -40,7 +40,7 @@ const Modal = ({bookInfo, setModalVisible}: info) => {
 
     useEffect(() => {
         setBook(bookInfo);
-    }, [])
+    }, [bookInfo])
 
     return (
         <div className={styles.modalPosition}>
