@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useState } from "react"
 import Categoria from "../../../types/Category"
 import Book from "../../../types/Book"
 import { useNavigate } from "react-router-dom"
-import firebaseInit from "../../../utils/firebaseBucket"
+// import firebaseInit from "../../../utils/firebaseBucket"
 
 const CreateBooks = () => {
     const navigate = useNavigate()
@@ -80,9 +80,9 @@ const CreateBooks = () => {
         });
     }
 
-    const handleFile = () => {
+    // const handleFile = () => {
         
-    }
+    // }
 
     return (
         <div className={styles.backgroundImg}>
