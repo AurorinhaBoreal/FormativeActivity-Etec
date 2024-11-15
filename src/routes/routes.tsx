@@ -3,6 +3,7 @@ import Home from "../pages/Body/Home";
 import ListBooks from "../pages/Body/ListBooks";
 import Structure from "../pages/Structure/structure";
 import CreateBooks from "../pages/Body/CreateBooks";
+import UpdateBooks from "../pages/Body/UpdateBooks";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     {
         path: "/books/create",
         element: <Structure body={<CreateBooks/>}/>
+    },
+    {
+        path: "/books/update/:nome_livro",
+        element: <Structure body={<UpdateBooks/>}/>
     },
     {
         path: "*",

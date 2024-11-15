@@ -1,4 +1,5 @@
 .cardContainer {
+    margin-bottom: 5vh;
     overflow: hidden;
     text-align: center;
     width: max-content;
@@ -36,4 +37,15 @@
 .btnWrapper {
     margin-bottom: 1vw;
     background-color: var(--c-lightBblue);
+}
+
+.noBooks {
+    margin: 13.5vw;
+    overflow-y: hidden;
+}
+
+.noBooksText {
+    width: 40ch;
+    text-align: center;
+    color: var(--c-redMain);
 }

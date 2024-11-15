@@ -1,15 +1,16 @@
 import Select from "../../../components/Forms/Select"
 import Input from "../../../components/Forms/Input"
-import styles from "./createBooks.module.css"
+import styles from "./updateBooks.module.css"
 import TextArea from "../../../components/Forms/TextArea"
 import Button from "../../../components/Button"
 import { ChangeEvent, useEffect, useState } from "react"
 import Categoria from "../../../types/Category"
 import Book from "../../../types/Book"
-import { useNavigate } from "react-router-dom"
-// import firebaseInit from "../../../utils/firebaseBucket"
+import { useNavigate, useParams } from "react-router-dom"
 
-const CreateBooks = () => {
+const UpdateBooks = () => {
+    const { nome_livro } = useParams()
+    const [formattedName, setFormattedName ] = useState("")
     const navigate = useNavigate()
     const [categories, setCategories] = useState<Categoria[]>([]);
     const [book, setBook] = useState<Book>({
@@ -19,8 +20,44 @@ const CreateBooks = () => {
         cod_categoria: 0
     });
 
+    const updateBook = (e: React.FormEvent) => {
+        e.preventDefault()
+
+        fetch("http://localhost:3000/alterarLivro", {
+            method: 'PUT',
+            mode: "cors",
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-ALlow-Origin': '*',
+                'AcceSS-Control-Allow-Headers': '*'
+            },
+            body: JSON.stringify(book)  
+        })
+        .then(
+            (resp)=>resp.json()
+        )
+        .then(()=>{
+            setTimeout(() => {
+                navigate("/books/list")
+            }, 500)}
+        )
+        .catch(
+            (err)=>{console.log(err)}
+        )
+    }
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const {name, value} = e.target;
+        setBook({...book,
+            [name]: value
+        });
+    }
+
     useEffect(() => {
-        // fireBucket()
+        if (nome_livro?.includes("-")) {
+            setFormattedName(nome_livro.replace("-", " "))
+        }
+    
         fetch("http://localhost:3000/listagemCategorias", {
             method: 'GET',
             headers: {
@@ -45,97 +82,74 @@ const CreateBooks = () => {
         .catch((error) => {
             console.error("Fetch error:", error);
         });
-    }, []);
 
-    const createBook = (e: React.FormEvent) => {
-        e.preventDefault()
-
-        fetch("http://localhost:3000/inserirLivro", {
-            method: 'POST',
-            mode: "cors",
+        fetch("http://localhost:3000/listagemLivro/"+formattedName, {
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-ALlow-Origin': '*',
-                'AcceSS-Control-Allow-Headers': '*'
-            },
-            body: JSON.stringify(book)  
-        })
-        .then(
-            (resp)=>resp.json()
-        )
-        .then(
-            ()=>{
-                navigate("/books/list")
+                "Content-Type": "application/json", // Correct MIME type
             }
-        )
-        .catch(
-            (err)=>{console.log(err)}
-        )
-    }
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const {name, value} = e.target;
-        setBook({...book,
-            [name]: value
+        })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            setBook(data.data);
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error);
         });
-    }
+    }, [nome_livro, formattedName]);
 
-    // const handleFile = () => {
-        
-    // }
 
     return (
         <div className={styles.backgroundImg}>
             <div className={styles.formsContainer}>
-                <h2 className={styles.title}>Cadastro de Livros</h2>
-                <h4 className={styles.description}>Insira os dados para o cadastro de um livro.</h4>
+                <h2 className={styles.title}>Listagem de Livros</h2>
+                <h4 className={styles.description}>Insira os dados para atualizar {book.nome_livro}.</h4>
                 <div className={styles.inputWrapper}>
                     <div className={styles.flexer}>
                         <Input
                             sendData={handleChange}
-                            text="Inform the Book's Title:"
+                            text="Update the Book's Title:"
                             type="text"
                             name="nome_livro"
-                            placeHolder="Dune"
+                            placeHolder={book.nome_livro}
                         />
                         <Input
                             sendData={handleChange}
-                            text="Inform the Book's Author:"
+                            text="Update the Book's Author:"
                             type="text"
                             name="autor_livro"
-                            placeHolder="Frank Herbert"
+                            placeHolder={book.autor_livro}
                         />
                     </div>
                     <div className={styles.flexer}>
                         <TextArea
                             sendData={handleChange}
                             name="descricao_livro"
-                            placeHolder="Dune is a book about deserts and giant worms"
-                            text="Inform the Book's Description"
+                            placeHolder={book.descricao_livro}
+                            text="Update the Book's Description"
                         />
                         <Select
                             sendData={handleChange}
                             name="cod_categoria"
                             options={categories}
-                            text="Select the book's category:"
+                            selected={book.cod_categoria}
+                            text="Update the book's category:"
                             placeholder="---"
                         />
                     </div>
-                    {/* <Input
-                        name="capa_livro"
-                        placeHolder="capa.png"
-                        text="Send the Book Cover file"
-                        sendData={handleFile}
-                        type="file"
-                        /> */}
                 </div>
                 <Button
-                    afterClick={createBook}
-                    btnText="Register Book"
+                    afterClick={updateBook}
+                    btnText="Update Book"
                 />
             </div>
         </div>
     );
 }
 
-export default CreateBooks;
+export default UpdateBooks
