@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Book from '../../types/Book'
 import styles from './modal.module.css'
 import getImages from '../../utils/getImages'
+import { useNavigate } from 'react-router-dom'
 
 interface info {
     bookInfo: Book
@@ -9,11 +10,22 @@ interface info {
 }
 
 const Modal = ({bookInfo, setModalVisible}: info) => {
+    const navigate = useNavigate()
     const [book, setBook] = useState<Book>()
     const bookCover = getImages();
 
     const editBook = () => {
+        let formattedName = ""
+        if ((book?.nome_livro?.includes(" "))) {
+            formattedName = book?.nome_livro.replace(" ", "-")
+        } else {
+            {book?.nome_livro 
+                ? formattedName = book.nome_livro 
+                : ""
+            }
+        }
 
+        navigate("/books/update/"+formattedName)        
     }
 
     const deleteBook = () => {
