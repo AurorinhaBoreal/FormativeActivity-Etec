@@ -64,8 +64,7 @@ const CreateBooks = () => {
             (resp)=>resp.json()
         )
         .then(
-            (data)=>{
-                console.log(data)
+            ()=>{
                 navigate("/books/list")
             }
         )
@@ -79,7 +78,6 @@ const CreateBooks = () => {
         setBook({...book,
             [name]: value
         });
-        console.log(book)
     }
 
     const handleFile = () => {
