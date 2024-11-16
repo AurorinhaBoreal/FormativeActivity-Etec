@@ -37,7 +37,6 @@
 .btnWrapper {
     margin-bottom: 1vw;
     background-color: var(--c-lightBblue);
-<<<<<<< HEAD
 }
 
 .noBooks {
@@ -49,6 +48,4 @@
     width: 40ch;
     text-align: center;
     color: var(--c-redMain);
-=======
->>>>>>> main
 }
