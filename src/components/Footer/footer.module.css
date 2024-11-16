@@ -1,0 +1,7 @@
+.footerBody{
+    padding: 1vw 0vw 1vw 1.5vw;
+    border-top: 0.5vw solid black;
+    display: flex;
+    justify-content: center;
+    background-color: var(--c-redMain);
+}

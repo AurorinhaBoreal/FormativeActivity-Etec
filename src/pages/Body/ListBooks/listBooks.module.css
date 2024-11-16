@@ -4,11 +4,5 @@
     gap: 2vw;
     justify-content: center;
     align-items: center;
-    margin: 3vw
-}
-
-.title {
-    font-size: 3vw;
-    width: auto;
-    height: auto;
+    margin: 3vw;
 }

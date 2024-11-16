@@ -13,6 +13,8 @@ This readme will be updated as the project evolves and the demand increases.
 
 Just clone the repository, run npm install and npm run dev at last... For now...
 
+You also need to run the backend of this project! That can be found [here](https://github.com/AurorinhaBoreal/pw3-aurora-app-libri-back)
+
 ## Developoing the Project
 
 This project is not very complex, we have a main objective that is register and list books.
